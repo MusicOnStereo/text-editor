@@ -50,25 +50,33 @@ class Panel {
 			}
 		}
 	}
-	reconstruct(element) {
-		
+	static reconstruct(element) {
+		const panel = new Panel()
+		this.children = element.children;
+		this.type = element.type;
+		this.content = element.content;
+		render();
 	}
 }
 
-const workspaceRootPanel = Panel(WorkspaceElement);
+const workspaceRootPanel = new Panel(WorkspaceElement, Panel.TYPES.parent);
 const workspacePanels = [];
 
-function createPanel(parentPanel = workspaceRootPanel, type) {
+function createPanel(type, parentPanel = workspaceRootPanel) {
 	
 	const panel = Panel.create(type);
 	const parentPanelType = parentPanel.type;
-	const content = parentPanel.setType(Panel.TYPES.parent);
+	parentPanel.setType(Panel.TYPES.parent);
 	if (parentPanelType !== Panel.TYPES.parent); {
-		
+		parentPanel.children.push(Panel.reconstruct(parentPanel));
 	}
-	workspacePanels.push();
+	parentPanel.children.push(panel);
+	panel.render();
+	parentPanel.render();
+	workspacePanels.push(panel);
 }
 function setup() {
-	
-
+	createPanel(Panel.TYPES.textarea);
 }
+
+setup();
