@@ -3,7 +3,7 @@ const StatusBarElement = document.getElementById("statusBar");
 
 
 class Panel {
-	children;
+	children = [];
 	type;
 	element;
 	content;
@@ -52,10 +52,10 @@ class Panel {
 	}
 	static reconstruct(element) {
 		const panel = new Panel()
-		this.children = element.children;
-		this.type = element.type;
-		this.content = element.content;
-		render();
+		panel.children = element.children;
+		panel.type = element.type;
+		panel.content = element.content;
+		panel.render();
 	}
 }
 
