@@ -1,0 +1,32 @@
+html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#content {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	flex-flow: column;
+	height: 100vh;
+	width: 100vw;
+}
+
+#statusBar {
+	flex-grow: 0;
+	height: 20px;
+	background-color: red;
+}
+
+#table {
+	flex-grow: 1; 
+	background-color: blue;
+	justify-self: stretch;
+}
